@@ -1,0 +1,13 @@
+.image-preview{
+    width: 2rem;
+}
+
+.close{
+    color: red;
+    font-size: large;
+}
+
+.handle{
+    color: orange;
+    font-size: x-large;
+}

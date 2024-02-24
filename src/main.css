@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: white;
+  color: #414141 !important;
+  font-family: Helvetica, Arial, sans-serif;
+}

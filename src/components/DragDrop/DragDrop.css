@@ -1,0 +1,19 @@
+.drag-n-drop{
+  min-height: 20em;
+  background-color: #fff;
+  border: .5em #dadada solid;
+  border-radius: 1em;
+}
+
+.cloud-color{
+  color: darkorange;
+}
+
+.hide-input{
+  display: none;
+}
+
+.orange-btn{
+  background-color: orange !important;
+  border: 1px solid orange;
+}

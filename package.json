@@ -13,11 +13,16 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@react-pdf/pdfkit": "^3.1.6",
+    "@types/blob-stream": "^0.1.33",
     "bootstrap": "^5.3.3",
+    "file-saver": "^2.0.5",
+    "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-sortablejs": "^6.1.4",
     "sortablejs": "^1.15.2",
+    "streamsaver": "^2.0.6",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

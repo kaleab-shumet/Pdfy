@@ -4,6 +4,7 @@ import "./App.css";
 import Banner from "./components/Banner/Banner";
 import DragDrop from "./components/DragDrop/DragDrop";
 import AboutSection from "./components/AboutSection/AboutSection";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Banner />
       <DragDrop />
       <AboutSection />
+      <Footer />
 
     </>
   );

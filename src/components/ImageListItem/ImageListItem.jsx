@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsUpDown, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faSort, faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./ImageListItem.css";
 import { prettyFileSize } from "../../utils/utils";
 
@@ -18,7 +18,7 @@ const ImageListItem = ({ fileid, imgSrc, fileName, fileSize, onRemove }) => {
       </div>
       <div className="d-flex ms-auto">
         <div className="d-flex align-items-center">
-          <FontAwesomeIcon className="mx-2 handle" icon={faArrowsUpDown} />
+          <FontAwesomeIcon className="mx-2 handle" icon={faSort} />
           <FontAwesomeIcon
             className="mx-2 close"
             icon={faXmark}

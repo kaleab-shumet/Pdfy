@@ -2,8 +2,12 @@ import AboutItem from "../AboutItem/AboutItem";
 
 const AboutSection = () => {
   return (
-    <div className="container">
+    <div className="container my-3">
+
+      <p className="h3 text-center m-4">About</p>
+
       <div className="row">
+
         <AboutItem
           title="Easiy JPEG, JPG and PNG Conversion"
           description="A simple and easiy interface to select your images, Reorder your

@@ -22,7 +22,11 @@ const DragDrop = () => {
 
   const [pageOrientation, setPageOrientaion] = useState('p')
   const [pageSize, setPageSize] = useState('fit')
-  const [pageMargin, setPageMargin] = useState(20)
+  const [pageMargin, setPageMargin] = useState(0)
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const [numOfConversion, setNumOfConversion] = useState(0)
 
   const onAddFilesClicked = () => {
     setSelectedFiles(newSelectedFilesBasedOnSorting());
@@ -109,12 +113,15 @@ const DragDrop = () => {
 
   }
 
+
+
   const handleConvert = () => {
     const newSortedSelectedFiles = newSelectedFilesBasedOnSorting();
 
 
     if (newSortedSelectedFiles.length > 0) {
 
+      setIsLoading(true)
       const pdfFilename = removeFileExtension(newSortedSelectedFiles[0].f.name) + ".pdf"
 
       const convert = async () => {
@@ -124,7 +131,9 @@ const DragDrop = () => {
         let doc = undefined;
 
         let i = 0
+        const lenOfFiles = newSortedSelectedFiles.length;
         for (const { fileid, f } of newSortedSelectedFiles) {
+
           const imageBase64 = await readFileAsDataURL(f)
           const { width, height } = await getImageDimensions(f)
           const pdfSetting = pageSize === 'fit' ? pageSelector(pageOrientation, { width, height }) : pageSelector(pageOrientation, pageSize)
@@ -188,10 +197,13 @@ const DragDrop = () => {
 
 
           doc.addImage(imageBase64, 'JPEG', alignXStart, alignYStart, calcSize.width, calcSize.height)
+
           i++;
         }
 
         doc.save(pdfFilename);
+        setIsLoading(false)
+        setNumOfConversion(numOfConversion + 1)
       }
 
       convert()
@@ -233,7 +245,7 @@ const DragDrop = () => {
       </form>
 
 
-      <div className="row">
+     { selectedSortableFiles.length > 0 && <div className="row border rounded p-3">
 
         <div className="col-12 col-md-6">
           <ReactSortable
@@ -263,7 +275,11 @@ const DragDrop = () => {
 
                 <label className="m-2">
                   Page Size:
-                  <select className="form-select">
+                  <select className="form-select"
+                    onChange={(e) => {
+                      setPageSize(e.target.value)
+                    }}
+                  >
                     <option value="fit">Fit Image size</option>
                     <option value="a4">A4</option>
                     <option value="letter">Letter</option>
@@ -271,15 +287,42 @@ const DragDrop = () => {
                 </label>
 
                 <label className="m-2">
-                  Page Orientation:
-                  <select className="form-select">
-                    <option value="p">Portrait</option>
-                    <option value="l">Landscape</option>
+                  Page Margin:
+                  <select className="form-select"
+                    onChange={(e) => {
+                      setPageMargin(parseInt(e.target.value))
+                    }} >
+                    <option value="0">No Margin</option>
+                    <option value="20">Small Margin</option>
+                    <option value="40">Big Margin</option>
                   </select>
                 </label>
 
+                {(pageSize !== 'fit') &&
+                  <label className="m-2">
+                    Page Orientation:
+                    <select className="form-select"
+                      onChange={(e) => {
+                        setPageOrientaion(e.target.value)
+                      }}>
+                      <option value="p">Portrait</option>
+                      <option value="l">Landscape</option>
+                    </select>
+                  </label>
+                }
+
 
               </div>
+
+
+              {isLoading &&
+
+                <div className="d-flex justify-content-center">
+                  <span className="loader"></span>
+                </div>
+              }
+
+              {numOfConversion > 0 && <p className="m-3"> <small> File is Automatically Downloaded, Please check your <u>Downloads</u> ! </small> </p>}
 
 
 
@@ -287,6 +330,7 @@ const DragDrop = () => {
                 type="button"
                 className="btn btn-primary btn-lg btn-block orange-btn m-2"
                 onClick={handleConvert}
+                disabled={isLoading}
               >
                 Convert
               </button>
@@ -294,6 +338,9 @@ const DragDrop = () => {
           )}
         </div>
       </div>
+}
+
+      
     </div>
   );
 };

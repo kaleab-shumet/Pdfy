@@ -1,3 +1,6 @@
+
+import { v4 as uuidv4 } from "uuid";
+
 const prettyFileSize = (bytes, si = false, dp = 1) => {
   const thresh = si ? 1000 : 1024;
 
@@ -66,20 +69,41 @@ const getImageDimensions = async (file) => {
 };
 
 const removeFileExtension = (fileName) => {
-  const lastDotIndex = fileName.lastIndexOf('.');
+  const lastDotIndex = fileName.lastIndexOf(".");
   if (lastDotIndex === -1) {
     return fileName; // No file extension found
   }
   const fileNameWithoutExtension = fileName.substring(0, lastDotIndex);
   return fileNameWithoutExtension;
-}
+};
 
+const newSelectedFilesBasedOnSorting = (
+  selectedSortableFiles,
+  selectedFiles
+) => {
+  const sortedFileidArray = selectedSortableFiles.map((m) => m.fileid);
+  const newSortedSelectedFiles = [];
+  for (const sf of sortedFileidArray) {
+    const foundFile = selectedFiles.find((f) => f.fileid === sf);
+    if (foundFile) {
+      newSortedSelectedFiles.push(foundFile);
+    }
+  }
+  return newSortedSelectedFiles;
+};
 
+const validateAndFormatFiles = (newFiles = []) => {
+  return newFiles
+    .filter((f) => validateFileType(f))
+    .map((f) => ({ f, fileid: uuidv4() }));
+};
 
 export {
   prettyFileSize,
   validateFileType,
   readFileAsDataURL,
   getImageDimensions,
-  removeFileExtension
+  removeFileExtension,
+  newSelectedFilesBasedOnSorting,
+  validateAndFormatFiles
 };

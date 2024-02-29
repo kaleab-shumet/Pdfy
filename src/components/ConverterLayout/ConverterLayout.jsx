@@ -35,6 +35,11 @@ const ConverterLayout = () => {
 
   useEffect(() => {
     (async () => setSelectedSortableFilesDisplay(await displayableFilesList(selectedSortedFiles)))()
+
+    if (selectedSortedFiles < 1 && numOfConversion > 0) {
+      setNumOfConversion(0)
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSortedFiles])
 

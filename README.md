@@ -1,8 +1,24 @@
-# React + Vite
+# PDFY
+![alt text](https://raw.githubusercontent.com/kaleab-shumet/imagetopdf/main/screenshot/imagetopdf.JPG)
+![alt text](https://raw.githubusercontent.com/kaleab-shumet/imagetopdf/main/screenshot/imagetopdf%20(2).JPG)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Introducing an Image to PDF Conversion Web Application with a convenient drag and drop feature! This user-friendly platform allows users to effortlessly transform their images into high-quality, professional PDF documents in just a few simple steps.
+The application offers a seamless and intuitive interface, enabling users to easily upload multiple image files of various formats, including JPEG, PNG, and GIF, by simply dragging and dropping them onto the designated area. Then Convert to a single PDF file.
 
-Currently, two official plugins are available:
+## Used technologies
+- React JS
+- Material UI
+- JsPDF
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- User-friendly interface
+- Drag and drop functionality for easy image uploading
+- Support for multiple image formats, including JPEG, PNG, and GIF
+- Fast and accurate image processing algorithm
+- Arrange the order of images
+- Preserves original image resolution and color fidelity
+
+## Features to be Added
+- Adjust page orientation
+- Select paper sizes
+- Add watermarks or annotations

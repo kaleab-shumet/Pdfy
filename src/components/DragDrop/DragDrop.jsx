@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 import { validateAndFormatFiles } from "../../utils/utils";
+import { Button } from "@mui/material";
 
 // eslint-disable-next-line react/prop-types
 const DragDrop = ({ addSelectedFiles }) => {
@@ -52,13 +53,8 @@ const DragDrop = ({ addSelectedFiles }) => {
                     size="3x"
                 />
                 <p className="py-1"> {isDragging ? "Drop your files here" : "Drag and Drop your files here"}</p>
-                <button
-                    type="button"
-                    className="btn btn-outline-primary btn-lg btn-lgg"
-                    onClick={onAddFilesClicked}
-                >
-                    Add Files
-                </button>
+               
+                <Button onClick={onAddFilesClicked} variant="contained">Add Files</Button>
             </div>
 
             <input

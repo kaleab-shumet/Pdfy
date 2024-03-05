@@ -5,10 +5,6 @@
   border-radius: 1em;
 }
 
-.cloud-color{
-  color: darkorange;
-}
-
 .hide-input{
   display: none;
 }
@@ -40,4 +36,11 @@
 
   .on-drag{
     background-color: rgb(255, 229, 182);
+  }
+
+  .scrollable-div {
+    overflow: auto;
+    /* Additional styling */
+    padding: 10px;
+    margin-bottom: 1rem;
   }

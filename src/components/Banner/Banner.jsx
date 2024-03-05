@@ -1,18 +1,23 @@
+import { Card, CardContent, Typography } from '@mui/material';
 import './Banner.css'
+import Container from '@mui/material/Container';
 const Banner = () => {
+
   return (
-    <div className='container'>
-      <div className="m-3 p-3 border rounded border-color">
-        <h5 className="my-2">
-          Convert Images to PDF online and Free !
-        </h5>
-        <p className="text-muted">
-          Do you have a Images and you want to convert it to PDF ? Then You are on
-          the right place. Effectively combine different JPG, PNG Images into a single
-          PDF and share with others. Completely free, no registration, no watermark
-        </p>
-      </div>
-    </div>
+    <Container sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
+      <Card>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            PDFY
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Do you have some images and you want to convert them to a PDF? 
+            Then you are in the right place. Easily combine different JPG, PNG images into a single PDF and share with others. 
+            Completely free, no registration or no watermarks.
+          </Typography>
+        </CardContent>
+      </Card>
+    </Container>
   );
 };
 

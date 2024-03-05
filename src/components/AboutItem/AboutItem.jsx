@@ -2,7 +2,7 @@
 import './AboutItem.css'
 const AboutItem = ({ title, description }) => {
   return (
-    <div className="col-12 col-md-6 my-1">
+    <div className="col-12 col-md-4 my-1">
       <div className="card card-body w-100 h-100">
         <h5 className="font-weight-bold">{title}</h5>
         <p>{description}</p>

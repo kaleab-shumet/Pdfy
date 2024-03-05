@@ -9,6 +9,8 @@ import {
   removeFileExtension,
 } from "../../utils/utils";
 import DragDrop from "../DragDrop/DragDrop";
+import { Button, Container, Grid } from "@mui/material";
+import AboutSection from "../AboutSection/AboutSection";
 
 const ConverterLayout = () => {
 
@@ -20,7 +22,7 @@ const ConverterLayout = () => {
   const [numOfConversion, setNumOfConversion] = useState(0)
   const [selectedSortedFiles, setSelectedSortedFiles] = useState([])
 
-  const [selectedSortableFilesDisplay, setSelectedSortableFilesDisplay] = new useState() // Uses on to display images
+  const [selectedSortableFilesDisplay, setSelectedSortableFilesDisplay] = new useState([]) // Uses on to display images
 
   const displayableFilesList = async (ssf = []) => {
     const newssf = [];
@@ -173,23 +175,96 @@ const ConverterLayout = () => {
   };
 
   return (
-    <div className="container">
 
 
-      <DragDrop
-        addSelectedFiles={addSelectedFiles}
-      />
+    <Container sx={{ marginTop: "2rem" }}>
+      <Grid container spacing={2}>
+        <Grid item md={8} sx={{width:"100%"}} >
+
+
+          <DragDrop
+            addSelectedFiles={addSelectedFiles}
+          />
+
+        </Grid>
+        <Grid item md={4} sx={{width:"100%"}}>
+          <div>
+
+            <div className="d-flex flex-column">
+
+              <label className="m-2">
+                Page Size:
+                <select className="form-select"
+                  onChange={(e) => {
+                    setPageSize(e.target.value)
+                  }}
+                >
+                  <option value="fit">Fit Image size</option>
+                  <option value="a4">A4</option>
+                  <option value="letter">Letter</option>
+                </select>
+              </label>
+
+              <label className="m-2">
+                Page Margin:
+                <select className="form-select"
+                  onChange={(e) => {
+                    setPageMargin(parseInt(e.target.value))
+                  }} >
+                  <option value="0">No Margin</option>
+                  <option value="20">Small Margin</option>
+                  <option value="40">Big Margin</option>
+                </select>
+              </label>
+
+              {(pageSize !== 'fit') &&
+                <label className="m-2">
+                  Page Orientation:
+                  <select className="form-select"
+                    onChange={(e) => {
+                      setPageOrientaion(e.target.value)
+                    }}>
+                    <option value="p">Portrait</option>
+                    <option value="l">Landscape</option>
+                  </select>
+                </label>
+              }
+
+
+            </div>
+
+
+            {isLoading &&
+
+              <div className="d-flex justify-content-center">
+                <span className="loader"></span>
+              </div>
+            }
+
+            {numOfConversion > 0 && <p className="m-3"> <small> File is Automatically Downloaded, Please check your <u>Downloads</u> ! </small> </p>}
 
 
 
-      {selectedSortedFiles.length > 0 && <div className="row border rounded p-3">
 
-        <div className="col-12 col-md-6">
+
+            <Button
+              sx={{width: "100%"}}
+              onClick={handleConvert}
+              disabled={isLoading || selectedSortedFiles.length < 1}
+              variant="contained">Convert</Button>
+          </div>
+        </Grid>
+      </Grid>
+
+      <Grid container>
+
+        <Grid item xs={12}>
           <ReactSortable
             handle=".handle"
             animation={200}
             delayOnTouchStart={true}
             delay={2}
+            className="p-4"
             list={selectedSortedFiles}
             setList={setSelectedSortedFiles}
           >
@@ -201,84 +276,13 @@ const ConverterLayout = () => {
               />
             ))}
           </ReactSortable>
-        </div>
+        </Grid>
 
-        <div className="col-12 col-md-6">
-
-          {selectedSortedFiles.length > 0 && (
-            <div className="d-flex flex-column justify-content-center m-3 p-2">
-
-              <div className="d-flex flex-column">
-
-                <label className="m-2">
-                  Page Size:
-                  <select className="form-select"
-                    onChange={(e) => {
-                      setPageSize(e.target.value)
-                    }}
-                  >
-                    <option value="fit">Fit Image size</option>
-                    <option value="a4">A4</option>
-                    <option value="letter">Letter</option>
-                  </select>
-                </label>
-
-                <label className="m-2">
-                  Page Margin:
-                  <select className="form-select"
-                    onChange={(e) => {
-                      setPageMargin(parseInt(e.target.value))
-                    }} >
-                    <option value="0">No Margin</option>
-                    <option value="20">Small Margin</option>
-                    <option value="40">Big Margin</option>
-                  </select>
-                </label>
-
-                {(pageSize !== 'fit') &&
-                  <label className="m-2">
-                    Page Orientation:
-                    <select className="form-select"
-                      onChange={(e) => {
-                        setPageOrientaion(e.target.value)
-                      }}>
-                      <option value="p">Portrait</option>
-                      <option value="l">Landscape</option>
-                    </select>
-                  </label>
-                }
-
-
-              </div>
-
-
-              {isLoading &&
-
-                <div className="d-flex justify-content-center">
-                  <span className="loader"></span>
-                </div>
-              }
-
-              {numOfConversion > 0 && <p className="m-3"> <small> File is Automatically Downloaded, Please check your <u>Downloads</u> ! </small> </p>}
-
-
-
-              <button
-                type="button"
-                className="btn btn-primary btn-lg btn-block orange-btn m-2"
-                onClick={handleConvert}
-                disabled={isLoading}
-              >
-                Convert
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-      }
-
-
-    </div>
+        <Grid item xs={12} >
+          <AboutSection />
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

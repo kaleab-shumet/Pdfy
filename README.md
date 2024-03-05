@@ -1,9 +1,13 @@
 # PDFY
-![alt text](https://raw.githubusercontent.com/kaleab-shumet/imagetopdf/main/screenshot/imagetopdf.JPG)
-![alt text](https://raw.githubusercontent.com/kaleab-shumet/imagetopdf/main/screenshot/imagetopdf%20(2).JPG)
+![alt text](https://raw.githubusercontent.com/kaleab-shumet/Pdfy/main/images/pdf1.PNG)
+![alt text](https://raw.githubusercontent.com/kaleab-shumet/Pdfy/main/images/pdf2.PNG)
+![alt text](https://raw.githubusercontent.com/kaleab-shumet/Pdfy/main/images/pdf3.PNG)
+![alt text](https://raw.githubusercontent.com/kaleab-shumet/Pdfy/main/images/pdf4.PNG)
 
 Introducing an Image to PDF Conversion Web Application with a convenient drag and drop feature! This user-friendly platform allows users to effortlessly transform their images into high-quality, professional PDF documents in just a few simple steps.
 The application offers a seamless and intuitive interface, enabling users to easily upload multiple image files of various formats, including JPEG, PNG, and GIF, by simply dragging and dropping them onto the designated area. Then Convert to a single PDF file.
+
+
 
 ## Used technologies
 - React JS

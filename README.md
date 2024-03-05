@@ -21,8 +21,8 @@ Online Demo [https://pdfy-tau.vercel.app](https://pdfy-tau.vercel.app/).
 - Fast and accurate image processing algorithm
 - Arrange the order of images
 - Preserves original image resolution and color fidelity
-
-## Features to be Added
 - Adjust page orientation
 - Select paper sizes
+
+## Features to be Added
 - Add watermarks or annotations
